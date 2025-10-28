@@ -3,92 +3,46 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<link rel="shortcut icon" href="icon.png" type="image/x-icon">
 <title>Huellitas de Amor</title>
 <style>
 :root{
-  --sky-top: #b6e3ff;
-  --sky-bottom: #e3f6ff;
-  --grass-top: #58b957;
-  --grass-bottom: #3fa43f;
-  --bubble: #ffffff;
-  --bubble-border: #cfdfff;
-  --shadow: rgba(0,0,0,0.15);
-  --text: #222;
-  --cat-orange: #f39c12;
-  --cat-black: #333333;
-  --cat-white: #ffffff;
-  --cat-honey: #d9a441;
+  --sky-top:#b6e3ff;
+  --sky-bottom:#e3f6ff;
+  --grass-top:#58b957;
+  --grass-bottom:#3fa43f;
+  --bubble:#fff;
+  --bubble-border:#cfdfff;
+  --shadow:rgba(0,0,0,0.15);
+  --text:#222;
+  --cat-orange:#f39c12;
+  --cat-black:#333;
+  --cat-white:#fff;
+  --cat-honey:#d9a441;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
   font-family:"Poppins",system-ui;
   background:linear-gradient(to bottom,var(--sky-top) 0%,var(--sky-bottom) 70%);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-end;
-  overflow:hidden;
-  color:var(--text);
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  overflow:hidden;color:var(--text);
 }
 .wrap{width:100%;max-width:600px;padding:20px;display:flex;justify-content:center;align-items:flex-end;position:relative;}
 .stage{display:flex;align-items:flex-end;position:relative;z-index:3;}
-.cat-wrap{
-  width:220px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  position:relative;
-  z-index:4;
-}
-.cat-btn{
-  background:transparent;
-  border:0;
-  cursor:pointer;
-  padding:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  position:relative;
-}
-.cat-btn:active{transform:scale(0.98);}
-.cat-shadow{
-  width:120px;height:18px;border-radius:50%;
-  background:radial-gradient(ellipse at center,rgba(0,0,0,0.2)0%,rgba(0,0,0,0)80%);
-  margin-top:-4px;filter:blur(3px);
-}
+.cat-wrap{width:220px;display:flex;flex-direction:column;align-items:center;position:relative;z-index:4;}
+.cat-btn{background:transparent;border:0;cursor:pointer;padding:0;display:flex;flex-direction:column;align-items:center;position:relative;}
+.cat-btn:active{transform:scale(0.97);}
+.cat-shadow{width:120px;height:18px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,0.2)0%,rgba(0,0,0,0)80%);margin-top:-4px;filter:blur(3px);}
 .bubble{
-  max-width:360px;
-  min-width:280px;
-  max-height:260px;
-  background:var(--bubble);
-  padding:16px 20px;
-  border-radius:18px;
-  box-shadow:0 6px 18px var(--shadow);
-  border:2px solid var(--bubble-border);
-  font-weight:600;
-  line-height:1.45;
-  font-size:16px;
-  color:var(--text);
-  position:absolute;
-  top:-40px;
-  left:210px;
-  text-align:left;
-  z-index:6;
-  overflow-y:auto;
-  word-wrap:break-word;
-  white-space:pre-wrap;
+  max-width:360px;min-width:260px;background:var(--bubble);padding:14px 18px;
+  border-radius:18px;box-shadow:0 6px 18px var(--shadow);border:2px solid var(--bubble-border);
+  font-weight:600;line-height:1.45;font-size:15px;color:var(--text);
+  position:absolute;top:-35px;left:210px;text-align:left;z-index:6;
+  overflow-y:auto;word-wrap:break-word;white-space:pre-wrap;
 }
-.bubble::-webkit-scrollbar { width:6px; }
-.bubble::-webkit-scrollbar-thumb { background:rgba(0,0,0,0.2); border-radius:6px; }
 .bubble::before{
-  content:"";
-  position:absolute;
-  top:45%;
-  left:-18px;
-  border-width:12px 18px 12px 0;
-  border-style:solid;
+  content:"";position:absolute;top:45%;left:-18px;
+  border-width:12px 18px 12px 0;border-style:solid;
   border-color:transparent var(--bubble) transparent transparent;
   filter:drop-shadow(-2px 0 2px rgba(0,0,0,0.1));
 }
@@ -96,27 +50,43 @@ body{
   position:fixed;left:0;right:0;bottom:0;height:140px;
   background:linear-gradient(180deg,rgba(0,0,0,0.04),rgba(0,0,0,0.05)),
              linear-gradient(to top,var(--grass-bottom),var(--grass-top));
-  box-shadow:0 -6px 15px rgba(0,0,0,0.08) inset;
-  z-index:2;
+  box-shadow:0 -6px 15px rgba(0,0,0,0.08) inset;z-index:2;
 }
-.status{
-  margin:12px 0 30px;
-  font-size:13px;
-  color:rgba(0,0,0,0.55);
-  text-align:center;
-  z-index:4;
+.status{margin:12px 0 30px;font-size:13px;color:rgba(0,0,0,0.55);text-align:center;z-index:4;}
+
+/* expresiones del gato */
+.cat-face.happy .mouth{d:path("M90 105 Q100 115 110 105");stroke:#e88484;stroke-width:2.5;}
+.cat-face.angry .mouth{d:path("M90 110 Q100 100 110 110");stroke:#b30000;stroke-width:3;}
+.cat-face.superhappy .mouth{d:path("M85 105 Q100 125 115 105");stroke:#ff7b9c;stroke-width:3;}
+
+/* Corazones animados */
+.hearts{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:10;}
+.heart{
+  position:absolute;font-size:22px;animation:floatHearts 3s ease-in forwards;
+  opacity:0;user-select:none;
 }
-.cat-face.happy .mouth { d:path("M90 105 Q100 115 110 105"); stroke:#e88484; stroke-width:2.5; }
-.cat-face.angry .mouth { d:path("M90 110 Q100 100 110 110"); stroke:#b30000; stroke-width:3; }
-.cat-face.surprised .mouth { d:path("M95 105 Q100 120 105 105"); stroke:#ffa500; stroke-width:2.5; }
+@keyframes floatHearts{
+  0%{transform:translate(0,0) scale(0.8);opacity:1;}
+  50%{opacity:1;}
+  100%{transform:translate(var(--x-move),var(--y-move)) scale(1.6);opacity:0;}
+}
+
+/* Responsivo */
+@media (max-width:480px){
+  .cat-wrap{width:180px;}
+  .bubble{left:auto;top:-100px;min-width:220px;max-width:250px;text-align:center;}
+  .bubble::before{display:none;}
+  .status{font-size:12px;}
+}
 </style>
 </head>
 <body>
 
 <div class="wrap">
   <main class="stage" aria-live="polite">
-    <button class="cat-btn" id="catBtn" aria-pressed="false">
-      <div class="cat-wrap" role="img" aria-label="Gatito calicó">
+    <button class="cat-btn" id="catBtn">
+      <div class="cat-wrap">
+        <div class="hearts" id="hearts"></div>
         <svg id="catSvg" viewBox="0 0 200 200" width="100%" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="100" cy="140" rx="50" ry="45" fill="var(--cat-white)" stroke="var(--cat-honey)" stroke-width="2"/>
           <circle cx="80" cy="140" r="12" fill="var(--cat-orange)"/>
@@ -140,7 +110,7 @@ body{
             <circle cx="125" cy="95" r="5" fill="#ffdfe6" opacity="0.7"/>
           </g>
         </svg>
-        <div class="bubble" id="bubble">Presioná a la luni para recibir tu frase ❤️</div>
+        <div class="bubble" id="bubble">Presioná a la Luni para recibir tu frase ❤️</div>
         <div class="cat-shadow"></div>
       </div>
     </button>
@@ -148,152 +118,147 @@ body{
 </div>
 
 <div class="grass"></div>
-<div class="status" id="statusText">Una frase por día — hasta completar las frases.</div>
+<div class="status" id="statusText">Listo para empezar el juego.</div>
 
 <script>
-const frases = [
-  "Me acuerdo de esa foto en la que tenías el pelo azul y tus tatuajes a la vista. No sabés cuánto me quedé mirándote antes de animarme a seguirte.",
-  "Me encanta cómo hablás de las cosas que te hicieron bien. La forma en que te emocionás sin darte cuenta me parece hermosa.",
-  "Amo cuando girás sin razón y después te reís al darte cuenta. Es uno de esos momentos simples que me encantan.",
-  "Tu forma de tener todo en orden, tus rutinas, tus manías… lejos de parecerme exageradas, me hacen quererte más. Son parte de vos, y me encanta poder acompañarte en eso.",
-  "Cada vez que repetís los diálogos de una película, tengo que aguantarme la sonrisa. Me encanta verte hacerlo.",
-  "Tenés una manera de hablar que admiro muchísimo. Siempre sabés cómo decir las cosas y eso me inspira.",
-  "Todo te queda bien. No sé cómo lo hacés, pero todo lo que usás tiene tu sello.",
-  "Hay algo en tus ojos cuando recién nos despertamos que me calma el alma.",
-  "No hay un solo gesto tuyo que no me haga quererte más.",
-  "Todavía pienso en lo que me dijiste una vez: que mis dedos eran así porque estaban llenos de amor. Desde entonces, cada vez que miro mis manos me acuerdo de vos.",
-  "A veces me intimida lo mucho que te admiro, pero al mismo tiempo me hace sentir muy afortunada de tenerte cerca.",
-  "Cuando me abrazás, todo se detiene. Siento paz, seguridad y ganas de quedarme ahí para siempre.",
-  "Me gusta cuando me mirás sin decir nada. Me cuesta disimular lo tímida que me ponés.",
-  "Con vos puedo ser yo misma, sin miedo, sin filtro. Me hacés sentir tranquila.",
-  "Gracias a vos aprendí a ver las cosas desde otro lugar. Me ayudaste a crecer, a animarme, a soltar miedos.",
-  "Me das ganas de ser mejor cada día.",
-  "Amo cuando estamos en silencio, cada una haciendo lo suyo, pero sintiéndonos cerca.",
-  "Me das paz cuando me abrazás o cuando jugamos como si fuéramos nenas otra vez.",
-  "Los domingos, cuando vuelvo a casa, me quedo pensando en todo lo que hicimos juntas. Me gusta revivir esos momentos hasta volver a verte.",
-  "Cocinar con vos, verte cantar o bailar mientras lo hacemos, es de mis cosas favoritas.",
-  "Valoro muchísimo todo lo que hacés, todo el esfuerzo que ponés cada día, incluso en lo más mínimo. Gracias por eso, de verdad.",
-  "Me gusta cómo transformás cualquier momento aburrido en algo divertido.",
-  "Me encanta que siempre encuentres algo gracioso que decir o hacer.",
-  "Gracias por cada abrazo, cada beso y cada risa que compartimos.",
-  "No hace falta apresurarse, todo llega a su tiempo.",
-  "Hoy podés disfrutar de vos misma, sin obligaciones.",
-  "No te olvides de respirar y disfrutar del momento.",
-  "Permitite sentir lo que quieras sentir hoy.",
-  "Hoy está bien simplemente ser vos misma.",
-  "Hoy podés hacer algo solo porque te hace feliz.",
-  "Permitite un momento de paz.",
-  "Que la risa sea parte de tu rutina hoy.",
-  "Hoy no tenés que hacer nada perfecto.",
-  "Que tu día tenga algo que te haga sonreír sin razón.",
-  "Hoy está bien parar un segundo y simplemente disfrutar.",
-  "I’ve never been so into somebody before. And every time we both touch I only want more.",
-  "You make me strong.",
-  "I can't believe that you are here and lying next to me.",
-  "Wish I could freeze this moment in a frame and stay like this. I'll put this day back on replay and keep reliving it.",
-  "You'll never feel like you're alone. I'll make this feel like home.",
-  "You're the habit that I can't break. You're the feeling I can't put down. You're the shiver that I can't shake.",
-  "When I'm with you, I'm so much happier.",
-  "I wanna die in your arms.",
-  "You know I love you so?",
-  "Trust I seek and I find in you.",
-  "I wanna stay together 'till the very end.",
-  "I wanna teach you how forever feels.",
-  "I want your midnights.",
-  "Love you to the moon and to Saturn.",
-  "It’s you and me, that’s my whole world.",
-  "I just wanna stay in this moment forever.",
-  "I’m captivated by you, baby, like a firework show.",
-  "You are beautiful, like a dream come alive.",
-  "You're the most amazing woman I've ever met.",
-  "Since you came into my life, everything makes so much more sense.",
-  "I never imagined I’d find someone like you, someone who understands me and accepts me just as I am.",
-  "Every day with you is a new adventure, and I never want it to end.",
-  "No matter what happens, I always want to be by your side.",
-  "Can I go where you're going? Can we always be this close? Forever and ever.",
-  "All I can say is, I'm so glad to meet you."
+const frasesOriginales = [
+"Me acuerdo de esa foto en la que tenías el pelo azul y tus tatuajes a la vista. No sabés cuánto me quedé mirándote antes de animarme a seguirte.",
+"Me encanta cómo hablás de las cosas que te hicieron bien. La forma en que te emocionás sin darte cuenta me parece hermosa.",
+"Amo cuando girás sin razón y después te reís al darte cuenta. Es uno de esos momentos simples que me encantan.",
+"Tu forma de tener todo en orden, tus rutinas, tus manías… lejos de parecerme exageradas, me hacen quererte más. Son parte de vos, y me encanta poder acompañarte en eso.",
+"Cada vez que repetís los diálogos de una película, tengo que aguantarme la sonrisa. Me encanta verte hacerlo.",
+"Tenés una manera de hablar que admiro muchísimo. Siempre sabés cómo decir las cosas y eso me inspira.",
+"Todo te queda bien. No sé cómo lo hacés, pero todo lo que usás tiene tu sello.",
+"Hay algo en tus ojos cuando recién nos despertamos que me calma el alma.",
+"No hay un solo gesto tuyo que no me haga quererte más.",
+"Todavía pienso en lo que me dijiste una vez: que mis dedos eran así porque estaban llenos de amor. Desde entonces, cada vez que miro mis manos me acuerdo de vos.",
+"A veces me intimida lo mucho que te admiro, pero al mismo tiempo me hace sentir muy afortunada de tenerte cerca.",
+"Cuando me abrazás, todo se detiene. Siento paz, seguridad y ganas de quedarme ahí para siempre.",
+"Me gusta cuando me mirás sin decir nada. Me cuesta disimular lo tímida que me ponés.",
+"Con vos puedo ser yo misma, sin miedo, sin filtro. Me hacés sentir tranquila.",
+"Gracias a vos aprendí a ver las cosas desde otro lugar. Me ayudaste a crecer, a animarme, a soltar miedos.",
+"Me das ganas de ser mejor cada día.",
+"Amo cuando estamos en silencio, cada una haciendo lo suyo, pero sintiéndonos cerca.",
+"Me das paz cuando me abrazás o cuando jugamos como si fuéramos nenas otra vez.",
+"Los domingos, cuando vuelvo a casa, me quedo pensando en todo lo que hicimos juntas. Me gusta revivir esos momentos hasta volver a verte.",
+"Cocinar con vos, verte cantar o bailar mientras lo hacemos, es de mis cosas favoritas.",
+"Valoro muchísimo todo lo que hacés, todo el esfuerzo que ponés cada día, incluso en lo más mínimo. Gracias por eso, de verdad.",
+"Me gusta cómo transformás cualquier momento aburrido en algo divertido.",
+"Me encanta que siempre encuentres algo gracioso que decir o hacer.",
+"Gracias por cada abrazo, cada beso y cada risa que compartimos.",
+"No hace falta apresurarse, todo llega a su tiempo.",
+"Hoy podés disfrutar de vos misma, sin obligaciones.",
+"No te olvides de respirar y disfrutar del momento.",
+"Permitite sentir lo que quieras sentir hoy.",
+"Hoy está bien simplemente ser vos misma.",
+"Hoy podés hacer algo solo porque te hace feliz.",
+"Permitite un momento de paz.",
+"Que la risa sea parte de tu rutina hoy.",
+"Hoy no tenés que hacer nada perfecto.",
+"Que tu día tenga algo que te haga sonreír sin razón.",
+"Sos una seño excelente",
+"Amo lo mucho que amas tu trabajo y lo mucho que amas a tus niños",
+"Quiero acompañarte siempre en tus metas",
+"Hoy está bien parar un segundo y simplemente disfrutar.",
+"I’ve never been so into somebody before. And every time we both touch I only want more.",
+"You make me strong.",
+"I can't believe that you are here and lying next to me.",
+"Wish I could freeze this moment in a frame and stay like this. I'll put this day back on replay and keep reliving it.",
+"You'll never feel like you're alone. I'll make this feel like home.",
+"You're the habit that I can't break. You're the feeling I can't put down. You're the shiver that I can't shake.",
+"When I'm with you, I'm so much happier.",
+"I wanna die in your arms.",
+"You know I love you so?",
+"Trust I seek and I find in you.",
+"I wanna stay together 'till the very end.",
+"I wanna teach you how forever feels.",
+"I want your midnights.",
+"Love you to the moon and to Saturn.",
+"It’s you and me, that’s my whole world.",
+"I just wanna stay in this moment forever.",
+"I’m captivated by you, baby, like a firework show.",
+"You are beautiful, like a dream come alive.",
+"You're the most amazing woman I've ever met.",
+"Since you came into my life, everything makes so much more sense.",
+"I never imagined I’d find someone like you, someone who understands me and accepts me just as I am.",
+"Every day with you is a new adventure, and I never want it to end.",
+"No matter what happens, I always want to be by your side.",
+"Can I go where you're going? Can we always be this close? Forever and ever.",
+"All I can say is, I'm so glad to meet you."
 ];
 
-const bubble = document.getElementById('bubble');
-const catBtn = document.getElementById('catBtn');
-const faceGroup = document.getElementById('faceGroup');
-const statusText = document.getElementById('statusText');
+const bubble=document.getElementById('bubble');
+const catBtn=document.getElementById('catBtn');
+const faceGroup=document.getElementById('faceGroup');
+const heartsContainer=document.getElementById('hearts');
+const statusText=document.getElementById('statusText');
+const KEY_INDEX='gatito_frase_index';
+const KEY_ORDER='gatito_frase_order';
 
-const KEY_FECHA = 'gatito_ultima_fecha';
-const KEY_INDEX = 'gatito_frase_index';
-const TOTAL = frases.length;
-const START_DATE = new Date(2025, 9, 27); // 27 de octubre
+function shuffleArray(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
 
-function formatDate(d){ return d.toISOString().split('T')[0]; }
-function hoyString(){ return formatDate(new Date()); }
-function puedeAbrirHoy(){ return hoyString() !== localStorage.getItem(KEY_FECHA); }
-function obtenerIndex(){ return parseInt(localStorage.getItem(KEY_INDEX) || '0', 10); }
-function guardarProgreso(idx){ 
-  localStorage.setItem(KEY_INDEX, idx); 
-  localStorage.setItem(KEY_FECHA, hoyString()); 
-  actualizarStatus(idx); 
+let order = JSON.parse(localStorage.getItem(KEY_ORDER));
+if(!order || order.length!==frasesOriginales.length){
+  order = shuffleArray([...Array(frasesOriginales.length).keys()]);
+  localStorage.setItem(KEY_ORDER, JSON.stringify(order));
 }
-function actualizarStatus(idx){
-  if(idx>=TOTAL){ statusText.textContent = "Se mostraron todas las frases. ❤️"; } 
-  else{ statusText.textContent = `Frase ${idx} de ${TOTAL} mostradas. Una por día.`; }
-}
+
+let frases = order.map(i => frasesOriginales[i]);
+let idx = parseInt(localStorage.getItem(KEY_INDEX)||'0',10);
+
 function setExpression(tipo){
-  faceGroup.classList.remove('happy','angry','surprised');
+  faceGroup.classList.remove('happy','angry','superhappy');
   faceGroup.classList.add(tipo);
 }
-function mostrarFrase(){
-  const hoy = new Date();
 
-  if(hoy < START_DATE){
-    setExpression('surprised');
-    bubble.textContent = `Todavía no es hora de jugar \nComenzará el 27/10/25`;
-    return;
+function animarCorazones(){
+  const emojis=["💖","💘","💗","💓","💞"];
+  for(let i=0;i<20;i++){
+    const heart=document.createElement('div');
+    heart.className='heart';
+    heart.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    const startX=50+(Math.random()*60-30);
+    const startY=70+(Math.random()*20-10);
+    heart.style.left=startX+"%";
+    heart.style.top=startY+"%";
+    const moveX=(Math.random()*200-100)+"px";
+    const moveY=(-100-Math.random()*100)+"px";
+    heart.style.setProperty("--x-move",moveX);
+    heart.style.setProperty("--y-move",moveY);
+    heart.style.fontSize=(18+Math.random()*10)+"px";
+    heart.style.animationDelay=(Math.random()*0.5)+"s";
+    heartsContainer.appendChild(heart);
+    setTimeout(()=>heart.remove(),3000);
   }
-
-  let idx = obtenerIndex();
-
-  if(idx >= TOTAL){
-    bubble.textContent = "Ya viste todas las frases. Gracias por jugar ❤️";
-    setExpression('happy');
-    return;
-  }
-
-  if(!puedeAbrirHoy()){
-    bubble.textContent = "Lo siento tami! Tenés que esperar hasta mañana ❤️";
-    setExpression('angry');
-    return;
-  }
-
-  idx++;
-  bubble.textContent = frases[idx-1];
-  guardarProgreso(idx);
-  setExpression('happy');
 }
 
-(function init(){
-  const hoy = new Date();
-  const idx = obtenerIndex();
-  const ultima = localStorage.getItem(KEY_FECHA);
-
-  if(hoy < START_DATE){
-    bubble.textContent = "Presioná a la luni para recibir tu frase ❤️";
-    setExpression('surprised');
-    statusText.textContent = "Comenzará el juego el 27/10/25";
-  } else if(ultima === hoyString() && idx>0){
-    bubble.textContent = frases[idx-1];
+function mostrarFrase(){
+  if(idx<frases.length){
+    bubble.textContent=frases[idx];
     setExpression('happy');
-    actualizarStatus(idx);
-  } else {
-    bubble.textContent = "Presioná a la luni para recibir tu frase ❤️";
-    setExpression('happy');
-    actualizarStatus(idx);
+    idx++;
+    localStorage.setItem(KEY_INDEX,idx);
+    statusText.textContent=`Frase ${idx} de ${frases.length}`;
+  }else{
+    bubble.textContent="🎉 Se terminó el juego, amor 💖 Gracias por leer mis 60 frases. Proximas actualizaciones";
+    setExpression('superhappy');
+    animarCorazones();
+    statusText.textContent="Juego completado ❤️";
+    localStorage.removeItem(KEY_ORDER);
+    localStorage.removeItem(KEY_INDEX);
   }
-})();
+}
 
-catBtn.addEventListener('click', mostrarFrase);
-catBtn.addEventListener('keydown', e=>{
-  if(e.key==='Enter'||e.key===' '){ e.preventDefault(); catBtn.click(); }
-});
+bubble.textContent="Presioná a la Luni para recibir tu frase ❤️";
+setExpression('happy');
+statusText.textContent=`Frase ${idx} de ${frases.length}`;
+catBtn.addEventListener('click',mostrarFrase);
 </script>
 </body>
 </html>
